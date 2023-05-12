@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExpensesFragment"
+    android:background="@color/white">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="436dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15sp"
+            android:layout_marginBottom="15sp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="5sp"
+                android:layout_marginBottom="5sp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@mipmap/ic_clothes_foreground"
+                    android:foreground="@mipmap/ic_clothes_foreground"/>
+
+                <TextView
+                    android:id="@+id/botton_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="Одежда и \nаксессуары"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="5sp"
+                android:layout_marginBottom="5sp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@mipmap/ic_products_foreground"
+                    android:foreground="@mipmap/ic_products_foreground" />
+
+                <TextView
+                    android:id="@+id/botton_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="Продукты"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="5sp"
+                android:layout_marginBottom="5sp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@mipmap/ic_cafe_foreground"
+                    android:foreground="@mipmap/ic_cafe_foreground"/>
+
+                <TextView
+                    android:id="@+id/botton_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="Рестораны и кафе"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="5sp"
+                android:layout_marginBottom="5sp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@mipmap/ic_health_foreground"
+                    android:foreground="@mipmap/ic_health_foreground"/>
+
+                <TextView
+                    android:id="@+id/botton_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="Здоровье и красота"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="5sp"
+                android:layout_marginBottom="5sp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@mipmap/ic_car_foreground"
+                    android:foreground="@mipmap/ic_car_foreground"/>
+
+                <TextView
+                    android:id="@+id/botton_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="Автомобиль"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="15sp"
+            android:layout_marginBottom="15sp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="5sp"
+                android:layout_marginBottom="5sp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@mipmap/ic_online_order_foreground"
+                    android:foreground="@mipmap/ic_online_order_foreground"/>
+
+                <TextView
+                    android:id="@+id/botton_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="Онлайн заказы"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="5sp"
+                android:layout_marginBottom="5sp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button7"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@mipmap/ic_education_foreground"
+                    android:foreground="@mipmap/ic_education_foreground"/>
+
+                <TextView
+                    android:id="@+id/botton_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="Образование"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="5sp"
+                android:layout_marginBottom="5sp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button8"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@mipmap/ic_transport_foreground"
+                    android:foreground="@mipmap/ic_transport_foreground"/>
+
+                <TextView
+                    android:id="@+id/botton_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="Транспорт"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="5sp"
+                android:layout_marginBottom="5sp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button9"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@mipmap/ic_tax_foreground"
+                    android:foreground="@mipmap/ic_tax_foreground"/>
+
+                <TextView
+                    android:id="@+id/botton_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="ЖКХ, налоги"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="5sp"
+                android:layout_marginBottom="5sp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button10"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@mipmap/ic_entertainment_foreground"
+                    android:foreground="@mipmap/ic_entertainment_foreground"/>
+
+                <TextView
+                    android:id="@+id/botton_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="Развлечения"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="4sp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="5sp"
+                android:layout_marginBottom="10sp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button11"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@mipmap/ic_internet_foreground"
+                    android:foreground="@mipmap/ic_internet_foreground"/>
+
+                <TextView
+                    android:id="@+id/botton_11"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="Мобильная связь и интернет"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="5sp"
+                android:layout_marginBottom="5sp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button12"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@mipmap/ic_other_foreground"
+                    android:foreground="@mipmap/ic_other_foreground"/>
+
+                <TextView
+                    android:id="@+id/botton_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="Прочее"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="80sp"
+            android:layout_marginTop="30sp"
+            android:orientation="horizontal">
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/login_field"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="30sp"
+                android:layout_marginEnd="0sp"
+                android:hint="Введите потраченную сумму"
+                android:inputType="number"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="15sp"
+                app:met_baseColor="@color/blue"
+                app:met_errorColor="@color/dark_red"
+                app:met_floatingLabel="normal"
+                app:met_helperText="₽"
+                app:met_primaryColor="@color/dark_blue"
+                app:met_singleLineEllipsis="true" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_clothes_foreground" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

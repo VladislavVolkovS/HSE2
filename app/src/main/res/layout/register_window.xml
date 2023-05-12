@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    app:cardElevation="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:orientation="vertical">
+
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:id="@+id/login_field"
+            android:hint="Придумайте логин"
+            android:inputType="text"
+            android:text=""
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textSize="15sp"
+            app:met_floatingLabel="normal"
+            app:met_baseColor="@color/blue"
+            app:met_primaryColor="@color/dark_blue"
+            app:met_errorColor="@color/dark_red"
+            app:met_singleLineEllipsis="true"
+            app:met_helperText="* обязательное поле для заполнения"
+            app:met_helperTextColor="@color/dark_red">
+        </com.rengwuxian.materialedittext.MaterialEditText>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:id="@+id/password_field"
+            android:hint="Придумайте пароль"
+            android:inputType="textPassword"
+            android:text=""
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textSize="15sp"
+            app:met_floatingLabel="normal"
+            app:met_baseColor="@color/blue"
+            app:met_primaryColor="@color/dark_blue"
+            app:met_errorColor="@color/dark_red"
+            app:met_singleLineEllipsis="true"
+            app:met_helperText="* обязательное поле для заполнения"
+            app:met_helperTextColor="@color/dark_red"
+            app:met_minCharacters="6">
+
+        </com.rengwuxian.materialedittext.MaterialEditText>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:id="@+id/confirm_password_field"
+            android:hint="Подтвердите пароль"
+            android:inputType="textPassword"
+            android:text=""
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textSize="15sp"
+            app:met_floatingLabel="normal"
+            app:met_baseColor="@color/blue"
+            app:met_primaryColor="@color/dark_blue"
+            app:met_errorColor="@color/dark_red"
+            app:met_singleLineEllipsis="true"
+            app:met_helperText="* обязательное поле для заполнения"
+            app:met_helperTextColor="@color/dark_red">
+
+        </com.rengwuxian.materialedittext.MaterialEditText>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:id="@+id/email_field"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:text=""
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textSize="15sp"
+            app:met_floatingLabel="normal"
+            app:met_baseColor="@color/blue"
+            app:met_primaryColor="@color/dark_blue"
+            app:met_errorColor="@color/dark_red"
+            app:met_singleLineEllipsis="true"
+            app:met_helperText="* обязательное поле для заполнения"
+            app:met_helperTextColor="@color/dark_red">
+
+        </com.rengwuxian.materialedittext.MaterialEditText>
+
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:id="@+id/surname_field"
+            android:hint="Фамилия"
+            android:inputType="text"
+            android:text=""
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textSize="15sp"
+            app:met_floatingLabel="normal"
+            app:met_baseColor="@color/blue"
+            app:met_primaryColor="@color/dark_blue"
+            app:met_errorColor="@color/dark_red"
+            app:met_singleLineEllipsis="true">
+
+        </com.rengwuxian.materialedittext.MaterialEditText>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:id="@+id/name_field"
+            android:hint="Имя"
+            android:inputType="text"
+            android:text=""
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textSize="15sp"
+            app:met_floatingLabel="normal"
+            app:met_baseColor="@color/blue"
+            app:met_primaryColor="@color/dark_blue"
+            app:met_errorColor="@color/dark_red"
+            app:met_singleLineEllipsis="true">
+
+        </com.rengwuxian.materialedittext.MaterialEditText>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:id="@+id/patronymic_field"
+            android:hint="Отчество(при наличии)"
+            android:inputType="text"
+            android:text=""
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textSize="15sp"
+            app:met_floatingLabel="normal"
+            app:met_baseColor="@color/blue"
+            app:met_primaryColor="@color/dark_blue"
+            app:met_errorColor="@color/dark_red"
+            app:met_singleLineEllipsis="true">
+
+        </com.rengwuxian.materialedittext.MaterialEditText>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

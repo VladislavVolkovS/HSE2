@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">HSE2</string>
+    <string name="enterance">Добро пожаловать!</string>
+    <string name="enterance_name">Войдите в учетную запись</string>
+    <string name="enterance_under">Released in 2023 v1.0</string>
+    <string name="btn_sign_in">Вход</string>
+    <string name="btn_register">Регистрация</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="expenses">Расходы</string>
+    <string name="statistic">Статистика</string>
+    <string name="settings">Настройки профиля</string>
+</resources>
