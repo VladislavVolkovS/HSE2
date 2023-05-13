@@ -28,7 +28,8 @@
             app:met_baseColor="@color/blue"
             app:met_primaryColor="@color/dark_blue"
             app:met_errorColor="@color/dark_red"
-            app:met_singleLineEllipsis="true">
+            app:met_singleLineEllipsis="true"
+            android:drawableRight="@drawable/ic_person">
         </com.rengwuxian.materialedittext.MaterialEditText>
 
         <com.rengwuxian.materialedittext.MaterialEditText
@@ -47,7 +48,8 @@
             app:met_baseColor="@color/blue"
             app:met_primaryColor="@color/dark_blue"
             app:met_errorColor="@color/dark_red"
-            app:met_singleLineEllipsis="true">
+            app:met_singleLineEllipsis="true"
+            android:drawableRight="@drawable/ic_lock">
 
         </com.rengwuxian.materialedittext.MaterialEditText>
 

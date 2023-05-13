@@ -3,8 +3,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StatisticFragment"
-    android:background="@color/light_blue">
+    tools:context=".StatisticFragment">
 
+    <com.github.mikephil.charting.charts.PieChart
+        android:layout_marginBottom="80sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/pie_chart"
+        >
+
+    </com.github.mikephil.charting.charts.PieChart>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="За день" />
+
+        <Button
+            android:id="@+id/button_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="За неделю" />
+
+        <Button
+            android:id="@+id/button_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="За месяц" />
+
+        <Button
+            android:id="@+id/button_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="За год" />
+    </LinearLayout>
 
 </FrameLayout>
