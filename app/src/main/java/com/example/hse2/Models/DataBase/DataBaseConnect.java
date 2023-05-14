@@ -155,7 +155,7 @@ public class DataBaseConnect {
         added.setTimestamp (5, timestamp);
         added.executeUpdate();
     }
-    public void getWasteAll(User user,ArrayList<Waste> list) throws SQLException, ClassNotFoundException {
+    public ArrayList<Waste> getWasteAll(User user,ArrayList<Waste> list) throws SQLException, ClassNotFoundException {
         String select = "SELECT * FROM " + ConstWaste.WASTE_TABLE + " WHERE " +
                 ConstWaste.WASTE_LOGIN + "=?";
         ResultSet res = null;
@@ -166,6 +166,8 @@ public class DataBaseConnect {
             Waste waste = new Waste(res.getInt(4),res.getString(2),res.getString(3),res.getTimestamp(5));
             list.add(waste);
         }
+        res.close();
+        return list;
     }
     public void getWasteInterval(User user,ArrayList<Waste> list) throws SQLException, ClassNotFoundException {
         String select = "SELECT * FROM " + ConstWaste.WASTE_TABLE + " WHERE " +

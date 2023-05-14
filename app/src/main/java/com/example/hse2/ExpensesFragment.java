@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.hse2.DataBaseFromBakend.getWasteaLL;
 import com.example.hse2.Models.Waste;
 import com.google.android.material.snackbar.Snackbar;
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -22,6 +23,8 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executor;
 
 public class ExpensesFragment extends Fragment {
 
@@ -31,6 +34,10 @@ public class ExpensesFragment extends Fragment {
     String text;
     String cost;
 
+    String login;
+    public void setLogin(String s){
+        this.login = s;
+    }
     public  ExpensesFragment(){
 
     }
@@ -43,6 +50,19 @@ public class ExpensesFragment extends Fragment {
         List<String> list = new ArrayList<>();
         add = (Button) root_view.findViewById(R.id.button13);
 //        String login = getArguments().getString("login");
+
+        ArrayList<Waste> wastes = new ArrayList<>();
+        try {
+           wastes = new getWasteaLL(getContext(),wastes,login).execute().get();
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        for (int i = 0; i < wastes.size(); i++) {
+            list.add(""+wastes.get(i).getType() + " - " + wastes.get(i).getSum()+"₽");
+        }
+        listView.setAdapter(new ArrayAdapter<>(root_view.getContext(), android.R.layout.simple_list_item_1, list));
 
         /*
         здесь нужно поместить в список информацию о последних 20 покупках
@@ -144,7 +164,8 @@ public class ExpensesFragment extends Fragment {
                     Snackbar.make(root_view, "Вы не выбрали тип покупки", Snackbar.LENGTH_SHORT).show();
                 }
                 else{
-                    list.add(0, "Трата: " + text + " - " + cost + "₽");
+                    list.add(0, "" + text + " - " + cost + "₽");
+                    Waste waste = new Waste();
                     listView.setAdapter(new ArrayAdapter<>(root_view.getContext(), android.R.layout.simple_list_item_1, list));
                     cost_field.onEditorAction(EditorInfo.IME_ACTION_DONE);
                     cost_field.setText("");

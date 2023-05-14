@@ -23,6 +23,10 @@ public class StatisticFragment extends Fragment {
     PieChart pieChart;
     ArrayList<PieEntry> pieEntries;
     ArrayList<Waste> wasteArrayList = new ArrayList<>();
+    String login;
+    public void setLogin(String s){
+        this.login = s;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

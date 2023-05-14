@@ -11,10 +11,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 public class SettingsFragment extends Fragment {
-
+    String login;
+    public void setLogin(String s){
+        this.login = s;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View set_view = inflater.inflate(R.layout.fragment_settings, container, false);
         Button ChangeUser = (Button) set_view.findViewById(R.id.button_change_user);
         ChangeUser.setOnClickListener(new View.OnClickListener() {

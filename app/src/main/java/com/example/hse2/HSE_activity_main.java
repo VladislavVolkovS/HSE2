@@ -24,24 +24,30 @@ public class HSE_activity_main extends AppCompatActivity {
         setContentView(binding.getRoot());
         Intent intent = getIntent();
         String login = intent.getStringExtra("login");
-        replaceFragment(new ExpensesFragment());
+        ExpensesFragment fragment1 = new ExpensesFragment();
+        fragment1.setLogin(login);
+        replaceFragment(fragment1);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
             if (item.getItemId() == R.id.wastes){
-                Bundle bundle = new Bundle();
-                bundle.putString("login",login);
+
                 ExpensesFragment fragment = new ExpensesFragment();
-                fragment.setArguments(bundle);
+                fragment.setLogin(login);
                 replaceFragment(fragment);
+
 
             }
 
             if (item.getItemId() == R.id.settings){
-                replaceFragment(new SettingsFragment());
+                SettingsFragment fragment = (new SettingsFragment());
+                fragment.setLogin(login);
+                replaceFragment(fragment);
             }
 
             if (item.getItemId() == R.id.statistic){
-                replaceFragment(new StatisticFragment());
+                StatisticFragment fragment = (new StatisticFragment());
+                fragment.setLogin(login);
+                replaceFragment(fragment);
             }
             return true;
         });

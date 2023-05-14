@@ -24,6 +24,10 @@ public class Waste {
         this.date = date;
     }
 
+    public Waste() {
+
+    }
+
     public int getSum() {
         return sum;
     }
