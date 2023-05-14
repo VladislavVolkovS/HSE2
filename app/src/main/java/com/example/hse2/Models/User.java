@@ -12,7 +12,7 @@ public class User {
     private String password;
     private String email;
 
-
+    public Boolean helper;
     public User(String name, String surname, String patronymic, String gender, Date brithDate, String login, String password, String email){
         this.name = name;
         this.surname = surname;

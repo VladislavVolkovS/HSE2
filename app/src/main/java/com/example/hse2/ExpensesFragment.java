@@ -1,5 +1,6 @@
 package com.example.hse2;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.hse2.Models.Waste;
 import com.google.android.material.snackbar.Snackbar;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
@@ -40,10 +42,12 @@ public class ExpensesFragment extends Fragment {
         listView = (ListView) root_view.findViewById(R.id.list_of_last);
         List<String> list = new ArrayList<>();
         add = (Button) root_view.findViewById(R.id.button13);
+//        String login = getArguments().getString("login");
 
         /*
         здесь нужно поместить в список информацию о последних 20 покупках
          */
+        // 10000 ccevvf "Трата: " + text + " - " + cost + "₽"
         buttons[0] = (Button) root_view.findViewById(R.id.button1);
         buttons[0].setOnClickListener(view -> {
             ImageView change_image = (ImageView) root_view.findViewById(R.id.imageView);

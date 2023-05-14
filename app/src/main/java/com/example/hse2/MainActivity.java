@@ -7,15 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
+import com.example.hse2.DataBaseFromBakend.*;
 import com.example.hse2.Models.DataBase.DataBaseConnect;
 import com.example.hse2.Models.User;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -27,10 +25,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.rengwuxian.materialedittext.MaterialEditText;
-import com.vishnusivadas.advanced_httpurlconnection.FetchData;
-import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.sql.SQLException;
+import java.sql.Time;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -83,24 +83,33 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            /*User user = new User();
+            User user = new User();
             user.setLogin(login.getText().toString());
             user.setPassword(password.getText().toString());
-            DataBaseConnect connect = new DataBaseConnect();
+            Boolean value = false;
+
             try {
-                connect.checkUser(user);
-                connect.inputUser(user);
-            } catch (SQLException | ClassNotFoundException e) {
+                new  getInputUser(this,user,value).execute().get(5, TimeUnit.SECONDS);
+            } catch (ExecutionException e) {
                 throw new RuntimeException(e);
-            }*/
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            } catch (TimeoutException e) {
+                throw new RuntimeException(e);
+            }
+            if(user.getPassword() != null){
+                value = true;
+            }
 
-
-            auth.signInWithEmailAndPassword(login.getText().toString(), password.getText().toString()).addOnSuccessListener(authResult -> {
+            if (value) {
                 Intent intent = new Intent(MainActivity.this, HSE_activity_main.class);
                 intent.putExtra("login", login.getText().toString());
                 startActivity(intent);
                 finish();
-            }).addOnFailureListener(e -> Snackbar.make(root, "Ошибка авторизации " + e.getMessage(), Snackbar.LENGTH_SHORT).show());
+            }
+            else{
+                Snackbar.make(root, "Вы неправильно ввели логин или пароль, или такого пользователя не существует", Snackbar.LENGTH_SHORT).show();
+            }
         });
 
         dialog.show();
@@ -150,58 +159,35 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(root, "Пароли не совпадают", Snackbar.LENGTH_SHORT).show();
                 return;
             }
-
-            //регистрация
-
-
-            auth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnSuccessListener(authResult -> {
-                User user = new User();
-                user.setEmail(email.getText().toString());
-                user.setLogin(login.getText().toString());
-                user.setPassword(password.getText().toString());
-                if (!TextUtils.isEmpty(surname.getText().toString())){
-                    user.setSurname(surname.getText().toString());
-                }
-                if (!TextUtils.isEmpty(name.getText().toString())){
-                    user.setName(name.getText().toString());
-                }
-                if (!TextUtils.isEmpty(patronymic.getText().toString())){
-                    user.setPatronymic(patronymic.getText().toString());
-                }
-
-                //Start ProgressBar first (Set visibility VISIBLE)
-                //Start ProgressBar first (Set visibility VISIBLE)
-                Handler handler = new Handler(Looper.getMainLooper());
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        //Starting Write and Read data with URL
-                        //Creating array for parameters
-                        String[] field = new String[2];
-                        field[0] = "param-1";
-                        field[1] = "param-2";
-                        //Creating array for data
-                        String[] data = new String[2];
-                        data[0] = "data-1";
-                        data[1] = "data-2";
-                        PutData putData = new PutData("https://projects.vishnusivadas.com/AdvancedHttpURLConnection/putDataTest.php", "POST", field, data);
-                        if (putData.startPut()) {
-                            if (putData.onComplete()) {
-                                String result = putData.getResult();
-                                //End ProgressBar (Set visibility to GONE)
-                                Log.i("PutData", result);
-                            }
-                        }
-                        //End Write and Read data with URL
-                    }
-                });
-
-
-                users.child(auth.getCurrentUser().getUid()).setValue(user)
-                        .addOnSuccessListener(unused -> Snackbar.make(root, "Вы успешно зарегистрировались!", Snackbar.LENGTH_SHORT).show());
-                startActivity(new Intent(MainActivity.this, HSE_activity_main.class));
+            User user = new User();
+            user.setName(name.getText().toString());
+            user.setSurname(surname.getText().toString());
+            user.setPatronymic(patronymic.getText().toString());
+            user.setPassword(password.getText().toString());
+            user.setLogin(login.getText().toString());
+            user.setEmail(email.getText().toString());
+            Boolean value = true;
+            try {
+                new registrUser(this,user,value).execute().get(5, TimeUnit.SECONDS);
+            } catch (ExecutionException e) {
+                throw new RuntimeException(e);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            } catch (TimeoutException e) {
+                throw new RuntimeException(e);
+            }
+            if(user.helper){
+                Intent intent = new Intent(MainActivity.this, HSE_activity_main.class);
+                intent.putExtra("login", login.getText().toString());
+                startActivity(intent);
                 finish();
-            }).addOnFailureListener(e -> Snackbar.make(root, "Ошибка регистрации. " + e.getMessage(), Snackbar.LENGTH_SHORT).show());
+            }
+            else{
+                Snackbar.make(root, "Ошибка регистрации", Snackbar.LENGTH_SHORT).show();
+            }
+            //регистрация
+//            Snackbar.make(root, "Ошибка регистрации. ", Snackbar.LENGTH_SHORT).show();
+
         });
 
         dialog.show();

@@ -1,22 +1,43 @@
 package com.example.hse2.Models.DataBase;
+import android.annotation.SuppressLint;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.StrictMode;
+import android.util.Log;
 import com.example.hse2.Models.User;
 import com.example.hse2.Models.Waste;
 
 import java.sql.*;
+import java.time.Clock;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
-public class DataBaseConnect extends ConfigsDB {
+public class DataBaseConnect {
+    protected String DBHost = "sql7.freesqldatabase.com";
+    protected String DBPort = "3306";
+    protected String DBUser = "sql7617691";
+    protected String DBPassword = "yB1gqVMyBY";
+    protected String DBName = "sql7617691";
     Connection DBConnect;
     /**
      * Метод который создаёт коннект с базой данных
      * Параметры можно изменить в классе ConfigsDB
     */
-    public Connection getDBConnect() throws ClassNotFoundException, SQLException{
-        String connectSting = "jdbc:mysql://" + DBHost + ":" + DBPort + "/" + DBName;
-        DBConnect = DriverManager.getConnection(connectSting,DBUser,DBPassword);
 
-        return DBConnect;
+    public  Connection getDBConnect(){
+        String connectSting = "jdbc:mysql://" + DBHost + ":" + DBPort + "/" + DBName;
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(connectSting,DBUser,DBPassword);
+            int a = 0;
+        }catch (Exception ex){
+            Log.e("err",ex.getMessage());
+        }
+//        DBConnect = DriverManager.getConnection(connectSting,DBUser,DBPassword);
+
+        return connection;
     }
 
 
@@ -34,14 +55,16 @@ public class DataBaseConnect extends ConfigsDB {
             count++;
         }
         if(count == 0){
+            sel.close();
             return false;
         }
         else{
+            sel.close();
             return true;
         }
     }
 
-    public User inputUser(User user) throws SQLException, ClassNotFoundException {
+    public boolean inputUser(User user) throws SQLException {
         String select = "SELECT * FROM " + ConstUsers.USER_TABLE + " WHERE " +
                 ConstUsers.USERS_PASSWORD + "=? AND " + ConstUsers.USERS_LOGIN + "=?" ;
         ResultSet res = null;
@@ -64,18 +87,19 @@ public class DataBaseConnect extends ConfigsDB {
 
         }
         if(count == 0){
-            System.out.println("Неправильно введёт логин или пароль");
-            return user.NullUser();
+            user.NullUser();
+            sel.close();
+            return false;
         }
         else{
-            System.out.println("Вы успешно авторизирвоались");
-            return user;
+            sel.close();
+            return true;
         }
     }
 
-    public boolean addUser(User user) throws SQLException, ClassNotFoundException {
+    public boolean addUser(User user,Boolean value) throws SQLException, ClassNotFoundException {
         boolean res = checkUser(user);
-        if(res == false){
+        if(!res){
             String insert = "INSERT INTO " + ConstUsers.USER_TABLE + "(" +
                     ConstUsers.USERS_NAME +","+ ConstUsers.USERS_SURNAME +","+ ConstUsers.USERS_PATRONYMIC +","+ ConstUsers.USERS_BRITHDATE +","+ ConstUsers.USERS_GENDER
                     +","+ ConstUsers.USERS_LOGIN +","+ ConstUsers.USERS_PASSWORD +","+ ConstUsers.USERS_EMAIL +")" +
@@ -84,17 +108,19 @@ public class DataBaseConnect extends ConfigsDB {
             pST.setString(1,user.getName());
             pST.setString(2,user.getSurname());
             pST.setString(3,user.getPatronymic());
-            pST.setDate(4,Date.valueOf(user.getBrithDate().toString()));
-            pST.setString(5,user.getGender());
+            pST.setDate(4, java.sql.Date.valueOf("2008-05-01"));
+            String a = new String("Мужчина");
+            pST.setString(5,a);
             pST.setString(6,user.getLogin());
             pST.setString(7,user.getPassword());
             pST.setString(8,user.getEmail());
             pST.executeUpdate();
-            System.out.println("Пользователь Добавлен");
+            pST.close();
+            value = true;
             return true;
         }
         else {
-            System.out.println("Пользователь с таким логином или почтой уже существует");
+            value = false;
             return false;
         }
     }

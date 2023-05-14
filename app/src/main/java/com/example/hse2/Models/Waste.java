@@ -11,6 +11,7 @@ public class Waste {
     private Timestamp date;
 
 
+
     public Waste(int sum, String name, String type){
         this.sum = sum;
         this.name = name;

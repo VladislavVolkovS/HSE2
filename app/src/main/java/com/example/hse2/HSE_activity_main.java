@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -21,12 +22,18 @@ public class HSE_activity_main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityHseMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        Intent intent = getIntent();
+        String login = intent.getStringExtra("login");
         replaceFragment(new ExpensesFragment());
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
             if (item.getItemId() == R.id.wastes){
-                replaceFragment(new ExpensesFragment());
+                Bundle bundle = new Bundle();
+                bundle.putString("login",login);
+                ExpensesFragment fragment = new ExpensesFragment();
+                fragment.setArguments(bundle);
+                replaceFragment(fragment);
+
             }
 
             if (item.getItemId() == R.id.settings){
