@@ -7,6 +7,8 @@ import android.util.Log;
 import com.example.hse2.Models.User;
 import com.example.hse2.Models.Waste;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.time.Clock;
 import java.time.LocalDate;
@@ -27,7 +29,7 @@ public class DataBaseConnect {
     */
 
     public  Connection getDBConnect(){
-        String connectSting = "jdbc:mysql://" + DBHost + ":" + DBPort + "/" + DBName;
+        String connectSting = "jdbc:mysql://" + DBHost + ":" + DBPort + "/" + DBName + "?useUnicode=true&characterEncoding=UTF-8";
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(connectSting,DBUser,DBPassword);
@@ -139,15 +141,18 @@ public class DataBaseConnect {
         return list;
     }
 
-    public void addWaste(User user, Waste waste) throws SQLException, ClassNotFoundException {
+    public void addWaste(User user, Waste waste) throws SQLException, ClassNotFoundException, UnsupportedEncodingException {
         String insert = "INSERT INTO " + ConstWaste.WASTE_TABLE + "(" +
                 ConstWaste.WASTE_LOGIN +","+ ConstWaste.WASTE_NAME +","+ ConstWaste.WASTE_TYPE +","+ ConstWaste.WASTE_SUM +","+ ConstWaste.WASTE_DATE
                 +")" +
                 "VALUES(?,?,?,?,?)";
         PreparedStatement added = getDBConnect().prepareStatement(insert);
+        String name = "моя покупка";
         added.setString(1,user.getLogin());
-        added.setString(2,waste.getName());
-        added.setString(3,waste.getType());
+        added.setString(2,name);
+        byte[] utf8Bytes = waste.getType().getBytes("UTF-8");
+        String wast = new String(utf8Bytes,"UTF-8");
+        added.setString(3,wast);
         added.setInt(4,waste.getSum());
 
         java.util.Date today = new java.util.Date();

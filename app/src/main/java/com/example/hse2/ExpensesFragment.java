@@ -15,7 +15,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.hse2.DataBaseFromBakend.addWasteInBase;
 import com.example.hse2.DataBaseFromBakend.getWasteaLL;
+import com.example.hse2.Models.User;
 import com.example.hse2.Models.Waste;
 import com.google.android.material.snackbar.Snackbar;
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -25,6 +27,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class ExpensesFragment extends Fragment {
 
@@ -166,6 +170,9 @@ public class ExpensesFragment extends Fragment {
                 else{
                     list.add(0, "" + text + " - " + cost + "₽");
                     Waste waste = new Waste();
+                    waste.setType(text);
+                    waste.setSum(Integer.parseInt(cost));
+                    new addWasteInBase(getContext(),waste, login).execute();
                     listView.setAdapter(new ArrayAdapter<>(root_view.getContext(), android.R.layout.simple_list_item_1, list));
                     cost_field.onEditorAction(EditorInfo.IME_ACTION_DONE);
                     cost_field.setText("");

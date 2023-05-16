@@ -25,7 +25,6 @@ public class Waste {
     }
 
     public Waste() {
-
     }
 
     public int getSum() {
