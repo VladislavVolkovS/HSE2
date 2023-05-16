@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".SettingsFragment">
 
-
     <Button
         android:id="@+id/button_change_user"
         android:layout_width="wrap_content"

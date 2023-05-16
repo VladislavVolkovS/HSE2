@@ -66,6 +66,7 @@ public class ExpensesFragment extends Fragment {
         for (int i = 0; i < wastes.size(); i++) {
             list.add(""+wastes.get(i).getType() + " - " + wastes.get(i).getSum()+"₽");
         }
+        Collections.reverse(list);
         listView.setAdapter(new ArrayAdapter<>(root_view.getContext(), android.R.layout.simple_list_item_1, list));
 
         /*
