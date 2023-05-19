@@ -33,8 +33,8 @@ public class getInputUser extends AsyncTask<User,Void,Boolean> {
 
         }catch (Exception ex){
             ex.printStackTrace();
+            return false;
         }
-        return false;
     }
     @Override
     protected void onPostExecute(Boolean res){
