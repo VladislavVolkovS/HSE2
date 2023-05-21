@@ -88,8 +88,9 @@ public class MainActivity extends AppCompatActivity {
             user.setPassword(password.getText().toString());
             Boolean value = false;
 
+
             try {
-                new  getInputUser(this,user,value).execute().get(5, TimeUnit.SECONDS);
+                new  getInputUser(this,user,value).execute().get(3,TimeUnit.SECONDS);
             } catch (ExecutionException e) {
                 throw new RuntimeException(e);
             } catch (InterruptedException e) {
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (TimeoutException e) {
                 throw new RuntimeException(e);
             }
-            if(user.getPassword() != null){
+            if(user.getName() != null){
                 value = true;
             }
 

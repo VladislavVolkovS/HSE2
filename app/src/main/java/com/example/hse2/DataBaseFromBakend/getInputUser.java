@@ -38,6 +38,7 @@ public class getInputUser extends AsyncTask<User,Void,Boolean> {
     }
     @Override
     protected void onPostExecute(Boolean res){
-        this.value = res;
+
+        res = value;
     }
 }
