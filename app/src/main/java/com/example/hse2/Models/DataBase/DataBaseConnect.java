@@ -17,11 +17,11 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DataBaseConnect {
-    protected String DBHost = "VH299.spaceweb.ru";
+    protected String DBHost = "sql12.freesqldatabase.com";
     protected String DBPort = "3306";
-    protected String DBUser = "georgtchai";
-    protected String DBPassword = "1veryHARDPASSWOrd";
-    protected String DBName = "georgtchai";
+    protected String DBUser = "sql12619942";
+    protected String DBPassword = "HGZtaijXnY";
+    protected String DBName = "sql12619942";
     Connection DBConnect;
     /**
      * Метод который создаёт коннект с базой данных
