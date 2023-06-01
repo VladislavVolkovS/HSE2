@@ -38,4 +38,4 @@ jobs:
         to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: New version
-        document: ${{ app.apk }}
+        document: app.apk
