@@ -31,15 +31,11 @@ jobs:
       with:
           name: app
           path: app/build/outputs/apk/debug/app-debug.apk
-    - name: send telegram message on push
+    - uses: actions/checkout@master
+    - name: send new version
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: |
-          ${{ github.actor }} created commit:
-          Commit message: ${{ github.event.commits[0].message }}
-
-          Repository: ${{ github.repository }}
-
-          See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+        message: New version
+        document: ${{ env.app }}
