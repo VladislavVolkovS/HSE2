@@ -41,4 +41,4 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        document: myapp
+        document: /home/runner/work/HSE2/HSE2/myapp
