@@ -34,11 +34,11 @@ jobs:
     - name: Download a Build Artifact
       uses: actions/download-artifact@v2.1.1
       with:
-        name: new_version.apk
+        name: app.apk
     - uses: actions/checkout@master
     - name: send new version
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        document: new_version.apk
+        document: app.apk
