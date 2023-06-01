@@ -37,4 +37,4 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        document: app.jar
+        document: ${{ github.workspace }}/app/build/outputs/apk/debug/app-debug.apk
