@@ -31,6 +31,8 @@ jobs:
       with:
           name: app
           path: app/build/outputs/apk/debug/app-debug.apk
+    - name: ls
+      run: ls -la
     - name: archive
       run: |
         7z a new_version.7z app
@@ -40,4 +42,4 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        document: ${{ github.workspace }}/app/build/outputs/apk/debug/app-debug.apk
+        document: new_version.7z
