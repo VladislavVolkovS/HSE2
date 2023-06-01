@@ -31,6 +31,9 @@ jobs:
       with:
           name: app
           path: app/build/outputs/apk/debug/app-debug.apk
+    - name: archive
+      run:  |
+        7z a new_version.7z app.apk
     - uses: actions/checkout@master
     - name: send new version
       uses: appleboy/telegram-action@master
