@@ -36,17 +36,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install zip
           zip -r myapp.zip *
-    - name: Upload to gdrive
-      uses: adityak74/google-drive-upload-git-action@main
-      with:
-        credentials: ${{ secrets.CREDENTIALS }}
-        filename: "myapp.zip"
-        folderId: ${{ secrets.folder_id }}
-        overwrite: "true" # optional boolean
     - uses: actions/checkout@master
     - name: send message about new version
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: /home/runner/work/HSE2/HSE2/myapp
+        document: myapp.zip
