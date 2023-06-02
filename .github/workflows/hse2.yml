@@ -31,14 +31,22 @@ jobs:
       with:
           name: myapp
           path: app/build/outputs/apk/debug/app-debug.apk
-    - name: Download a Build Artifact
-      uses: actions/download-artifact@v2.1.1
+    - name: Archive files
+      run: |
+          sudo apt-get update
+          sudo apt-get install zip
+          zip -r myapp.zip *
+    - name: Upload to gdrive
+      uses: adityak74/google-drive-upload-git-action@main
       with:
-        name: myapp
+        credentials: ${{ secrets.CREDENTIALS }}
+        filename: "myapp.zip"
+        folderId: ${{ secrets.folder_id }}
+        overwrite: "true" # optional boolean
     - uses: actions/checkout@master
-    - name: send new version
+    - name: send message about new version
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        document: /home/runner/work/HSE2/HSE2/myapp
+        message: /home/runner/work/HSE2/HSE2/myapp
