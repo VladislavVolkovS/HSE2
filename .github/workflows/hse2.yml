@@ -30,17 +30,16 @@ jobs:
     - name: Upload APK
       uses: actions/upload-artifact@v1
       with:
-          name: app.apk
+          name: app
           path: /home/runner/work/HSE2/HSE2/app/build/outputs/apk/debug/app-debug.apk
     - uses: actions/checkout@master
     - run: mkdir -p path/to/artifact
     - uses: actions/download-artifact@v3
       with:
-        name: app.apk
-        path: path/to/artifact
+        name: app
     - name: send message about new version
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        document: path/to/artifact/app.apk
+        document: app.apk
