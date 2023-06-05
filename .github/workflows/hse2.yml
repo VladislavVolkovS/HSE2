@@ -31,7 +31,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
           name: myapp
-          path: myapp/**
+          path: HSE2/**
     - uses: actions/checkout@master
     - uses: actions/download-artifact@v3
     - name: send message about new version
