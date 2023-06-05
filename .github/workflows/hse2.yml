@@ -31,8 +31,9 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
           name: myapp
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: myapp/**
     - uses: actions/checkout@master
+    - uses: actions/download-artifact@v3
     - name: send message about new version
       uses: appleboy/telegram-action@master
       with:
