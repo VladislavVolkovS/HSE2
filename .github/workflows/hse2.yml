@@ -37,6 +37,8 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: app
+    - name: ls 
+      run: ls -la 
     - name: send message about new version
       uses: appleboy/telegram-action@master
       with:
