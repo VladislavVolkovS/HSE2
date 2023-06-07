@@ -123,7 +123,7 @@ jobs:
         name: lint-report
         
     - name: ls 
-      run: ls -l /app 
+      run: ls -la 
     
     - name: send report in html
       uses: appleboy/telegram-action@master
