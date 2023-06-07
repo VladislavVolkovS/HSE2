@@ -90,7 +90,7 @@ jobs:
           
   send_version_to_telgram_bot:
   
-    needs: build
+    needs: [build, lint]
     
     runs-on: ubuntu-latest
     
@@ -111,3 +111,16 @@ jobs:
         to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         document: app-debug.apk
+        message: | 
+          New version! 
+          
+          More details: https://github.com/VladislavVolkovS/HSE2
+          
+    - name: send report in html
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        document: lint-results-debug.html
+        message: | 
+          Lint report:
