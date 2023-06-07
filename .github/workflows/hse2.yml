@@ -39,13 +39,6 @@ jobs:
     - name: Build debug APK
       run: bash ./gradlew assembleDebug --stacktrace
       
-    - name: Restore Cache
-      uses: actions/cache@v2
-      with:
-        path: |
-          ~/.gradle/caches
-          ~/.gradle/wrapper
-      
     - name: Upload APK
       uses: actions/upload-artifact@v1
       with:
@@ -70,6 +63,9 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
         
       - name: Run Debug Lint
         run: ./gradlew lintDebug
