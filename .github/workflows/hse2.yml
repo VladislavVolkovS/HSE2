@@ -7,11 +7,26 @@ on:
     branches: [ "master" ]
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+        
+      - name: Run Lint
+        run: ./gradlew lintDebug
+        
+      - name: Upload html test report
+        uses: actions/upload-artifact@v2
+        with:
+          name: index.html
+          path: app/build/reports/lint-result-debug.html
+        
   build:
-
+    name: build app
     runs-on: ubuntu-latest
     env:
-      app_name: app.apk
+      app_name: latest_version.apk
     steps:
     - uses: actions/checkout@v3
     - name: set up JDK 17
@@ -32,8 +47,11 @@ jobs:
       with:
           name: app
           path: /home/runner/work/HSE2/HSE2/app/build/outputs/apk/debug/app-debug.apk
+  send_version_to_telgram_bot:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
     - uses: actions/checkout@master
-    - run: mkdir -p path/to/artifact
     - uses: actions/download-artifact@v3
       with:
         name: app
