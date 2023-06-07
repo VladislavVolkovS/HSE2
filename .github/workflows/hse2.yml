@@ -121,6 +121,9 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: lint-report
+        
+    - name: ls 
+      run: ls -la 
     
     - name: send report in html
       uses: appleboy/telegram-action@master
