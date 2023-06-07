@@ -87,7 +87,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: lint-report
-          path: '**/lint-results-*'
+          path: '**/build/reports/lint-results-*'
           
           
   send_version_to_telgram_bot:
@@ -122,8 +122,8 @@ jobs:
       with:
         name: lint-report
         
-    - name: ls 
-      run: ls -la 
+    - name: Display structure of downloaded files
+      run: ls -R 
     
     - name: send report in html
       uses: appleboy/telegram-action@master
