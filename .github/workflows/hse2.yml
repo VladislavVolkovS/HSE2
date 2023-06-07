@@ -71,7 +71,7 @@ jobs:
         run: chmod +x gradlew
         
       - name: Run Debug Lint
-        run: ./gradlew lintDebug
+        run: ./gradlew --version=17 lintDebug
         
       - name: Upload html test report
         if: ${{ always() }}
