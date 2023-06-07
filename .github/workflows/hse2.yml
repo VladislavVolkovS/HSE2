@@ -113,7 +113,7 @@ jobs:
         to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         document: app-debug.apk
-        message_file: | 
+        message: | 
           New version! 
           
           More details: https://github.com/VladislavVolkovS/HSE2
@@ -128,5 +128,5 @@ jobs:
         to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         document: lint-results-debug.html
-        message_file: | 
+        message: | 
           Lint report:
