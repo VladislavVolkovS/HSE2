@@ -39,22 +39,12 @@ jobs:
     - name: Build debug APK
       run: bash ./gradlew assembleDebug --stacktrace
       
-    - name: Checkout the code
-      uses: actions/checkout@v2
-
-    - name: Run AndroidLint with reviewdog
-      uses: DVDAndroid/action-android-lint@v1.2
+    - name: Restore Cache
+      uses: actions/cache@v2
       with:
-        github_token:
-          ${{ secrets.GITHUB_TOKEN }}
-        lint_xml_file:
-          app/build/reports/lint-results.xml
-
-    - name: Upload html test report
-      uses: actions/upload-artifact@v2
-      with:
-        name: index.html
-        path: app/build/reports/lint-results.xml
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
       
     - name: Upload APK
       uses: actions/upload-artifact@v1
@@ -65,7 +55,7 @@ jobs:
       
   lint:
   
-    needs: build
+    name: Lint
     
     runs-on: ubuntu-latest
     
@@ -74,19 +64,22 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
         
-      - name: Run AndroidLint with reviewdog
-        uses: DVDAndroid/action-android-lint@v1.2
+      - name: Restore Cache
+        uses: actions/cache@v2
         with:
-          github_token:
-            ${{ secrets.GITHUB_TOKEN }}
-          lint_xml_file:
-            app/build/reports/lint-results.xml
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+        
+      - name: Run Debug Lint
+        run: ./gradlew lintDebug
         
       - name: Upload html test report
+        if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
-          name: index.html
-          path: app/build/reports/lint-results.xml
+          name: lint-report
+          path: '**/build/reports/lint-results-*'
           
           
   send_version_to_telgram_bot:
