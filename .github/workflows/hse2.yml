@@ -87,7 +87,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: lint-report
-          path: '**/build/reports/lint-results-*'
+          path: '**/lint-results-*'
           
           
   send_version_to_telgram_bot:
