@@ -45,6 +45,16 @@ jobs:
           name: app
           path: /home/runner/work/HSE2/HSE2/app/build/outputs/apk/debug/app-debug.apk
           
+    - name: Run Debug Lint
+      run: ./gradlew lintDebug
+
+    - name: Upload html test report
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: lint-report
+        path: '**/build/reports/lint-results-*'
+          
       
   lint:
   
@@ -71,7 +81,7 @@ jobs:
         run: chmod +x gradlew
         
       - name: Run Debug Lint
-        run: ./gradlew --version=17 lintDebug
+        run: ./gradlew lintDebug
         
       - name: Upload html test report
         if: ${{ always() }}
