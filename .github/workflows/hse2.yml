@@ -101,6 +101,8 @@ jobs:
     - uses: actions/checkout@master
     
     - uses: actions/download-artifact@v3
+      with:
+        name: app_last_version
         
     - name: ls 
       run: ls -la 
@@ -116,12 +118,15 @@ jobs:
           
           More details: https://github.com/VladislavVolkovS/HSE2
           
+    - uses: actions/download-artifact@v3
+      with:
+        name: lint-report
     
     - name: send report in html
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        document: lint-report/lint-results-debug.html
+        document: lint-results-debug.html
         message_file: | 
           Lint report:
