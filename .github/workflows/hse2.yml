@@ -114,7 +114,7 @@ jobs:
         token: ${{ secrets.TELEGRAM_TOKEN }}
         document: app-debug.apk
         message: | 
-          New version! 
+          New version.
           
           More details: https://github.com/VladislavVolkovS/HSE2
           
