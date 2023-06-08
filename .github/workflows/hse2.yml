@@ -55,7 +55,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
           name: HSE2-Release
-          path: /home/runner/work/HSE2/HSE2/app/build/outputs/apk/release/app-release.apk
+          path: /home/runner/work/HSE2/HSE2/app/build/outputs/apk/release/app-release-unsigned.apk
           
       
   lint:
@@ -130,7 +130,7 @@ jobs:
         token: ${{ secrets.TELEGRAM_TOKEN }}
         document: |
           app-debug.apk
-          app-release.apk
+          app-release-unsigned.apk
         message: | 
           New version.
           
