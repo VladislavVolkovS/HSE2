@@ -132,6 +132,14 @@ jobs:
           New version.
           
           More details: https://github.com/VladislavVolkovS/HSE2
+    
+    - name: send message about new version
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          Debug:
         document: app-debug.apk
     
     - name: send message about new version
@@ -139,6 +147,8 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          Release:
         document: app-release-unsigned.apk
           
     - uses: actions/download-artifact@v3
