@@ -130,6 +130,7 @@ jobs:
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: | 
           New version.
+          Commit: ${{ github.run_id }}
           
           More details: https://github.com/VladislavVolkovS/HSE2
     
