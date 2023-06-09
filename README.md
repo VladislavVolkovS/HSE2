@@ -12,3 +12,6 @@
 - Добавлена выгрузка в телеграм канал установочного приложения .apk(debug, release)
 - Добавлена выгрузка lint отчета в формате html для возможности посмотреть в браузере
 
+Master branch status
+
+![master](https://github.com/VladislavVolkovS/HSE2/workflows/Android CI/badge.svg)
