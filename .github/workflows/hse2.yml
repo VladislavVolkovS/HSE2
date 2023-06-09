@@ -58,9 +58,9 @@ jobs:
           path: /home/runner/work/HSE2/HSE2/app/build/outputs/apk/release/app-release-unsigned.apk
       
       
-  semantic_release:
+release:
     
-    name: Sematic Release
+    name: Release
     
     needs: build
     
