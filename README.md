@@ -12,4 +12,6 @@
 - Добавлена выгрузка в телеграм канал установочного приложения .apk(debug, release)
 - Добавлена выгрузка lint отчета в формате html для возможности посмотреть в браузере
 
+[![Unit testing](https://github.com/VladislavVolkovS/HSE2/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/VladislavVolkovS/HSE2/actions/workflows/unit_tests.yml)
+
 [![Android CI](https://github.com/VladislavVolkovS/HSE2/actions/workflows/hse2.yml/badge.svg)](https://github.com/VladislavVolkovS/HSE2/actions/workflows/hse2.yml)
