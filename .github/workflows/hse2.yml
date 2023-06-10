@@ -50,6 +50,8 @@ jobs:
   
     name: build app
     
+    needs: Unit-tests
+    
     runs-on: ubuntu-latest
     
     env:
