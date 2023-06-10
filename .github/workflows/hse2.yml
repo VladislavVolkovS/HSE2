@@ -1,0 +1,205 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+        
+  build:
+  
+    name: build app
+    
+    runs-on: ubuntu-latest
+    
+    env:
+      app_name: latest_version.apk
+      
+    steps:
+    
+    - uses: actions/checkout@v3
+    
+    - name: set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      
+    - name: Build with Gradle
+      run: ./gradlew build
+      
+    - name: Build debug APK
+      run: bash ./gradlew assembleDebug --stacktrace
+      
+    - name: Build Release APK
+      run: bash ./gradlew assembleRelease --stacktrace
+      
+    - name: Display
+      run: ls -R
+      
+    - name: Upload debug APK
+      uses: actions/upload-artifact@v1
+      with:
+          name: HSE2-debug
+          path: /home/runner/work/HSE2/HSE2/app/build/outputs/apk/debug/app-debug.apk
+          
+    - name: Upload Release APK
+      uses: actions/upload-artifact@v1
+      with:
+          name: HSE2-Release
+          path: /home/runner/work/HSE2/HSE2/app/build/outputs/apk/release/app-release-unsigned.apk
+      
+      
+  release:
+    
+    name: Release
+    
+    needs: build
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+      - name: Checkout the code
+        uses: actions/checkout@v3
+        
+      - uses: actions/download-artifact@v3
+        with:
+          name: HSE2-Release
+          
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+           tag_name: ${{ github.run_number }}
+           release_name: ${{ github.event.repository.name }} v1.1.${{ github.run_number }}
+      - name: Upload Release APK
+        id: upload_release_asset
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+           upload_url: ${{ steps.create_release.outputs.upload_url }}
+           asset_path: app-release-unsigned.apk
+           asset_name: ${{ github.event.repository.name }}.apk
+           asset_content_type: application/zip
+          
+      
+  lint:
+  
+    name: Lint
+    
+    needs: build
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+      - name: Checkout the code
+        uses: actions/checkout@v3
+        
+      - name: set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+          
+      - name: Restore Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+        
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+        
+      - name: Run Debug Lint
+        run: ./gradlew lintDebug
+        
+      - name: Upload html test report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: lint-report
+          path: '**/build/reports/lint-results-*'
+          
+          
+  send_version_to_telgram_bot:
+  
+    needs: lint
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+    - uses: actions/checkout@master
+    
+    - uses: actions/download-artifact@v3
+      with:
+        name: HSE2-debug
+        
+    - uses: actions/download-artifact@v3
+      with:
+        name: HSE2-Release
+        
+    - name: ls 
+      run: ls -la 
+      
+    - name: send message about new version
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: | 
+          New version.
+          Commit: ${{ github.run_id }}
+          
+          More details: https://github.com/VladislavVolkovS/HSE2
+    
+    - name: send message about new version
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          Debug:
+        document: app-debug.apk
+    
+    - name: send message about new version
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          Release:
+        document: app-release-unsigned.apk
+          
+    - uses: actions/download-artifact@v3
+      with:
+        name: lint-report
+        
+    - name: Display structure of downloaded files
+      run: ls -R 
+    
+    - name: send report in html
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: | 
+          Lint report:
+        document: ./app/build/reports/lint-results-debug.html
