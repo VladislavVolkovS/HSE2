@@ -14,6 +14,5 @@
 
 - Добавлен workflow с unit тестированием, а также выгрузка артефакта - html отчета о тестировании в телеграм канал
 
-[![Unit testing](https://github.com/VladislavVolkovS/HSE2/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/VladislavVolkovS/HSE2/actions/workflows/unit_tests.yml)
 
 [![Android CI](https://github.com/VladislavVolkovS/HSE2/actions/workflows/hse2.yml/badge.svg)](https://github.com/VladislavVolkovS/HSE2/actions/workflows/hse2.yml)
