@@ -13,7 +13,6 @@
 - Добавлена выгрузка lint отчета в формате html для возможности посмотреть в браузере в телеграм канал
 
 - Добавлен workflow с unit тестированием, а также выгрузка артефакта - html отчета о тестировании в телеграм канал
-- Настроено правило защиты ветки мастер при неуспешном тестировании
 
 [![Unit testing](https://github.com/VladislavVolkovS/HSE2/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/VladislavVolkovS/HSE2/actions/workflows/unit_tests.yml)
 
