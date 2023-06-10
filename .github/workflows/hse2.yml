@@ -36,14 +36,26 @@ jobs:
         name: index.html
         path: app/build/reports/tests/testDebugUnitTest/index.html
 
-    - name: send message with report
-      if: always()
+    - name: send message with report - succesful
+      if: success()
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: | 
-          Testing report.
+          Testing report - succesful.
+          More information in file:
+        document: app/build/reports/tests/testDebugUnitTest/index.html
+        
+    - name: send message with report - succesful
+      if: failure()
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_CHAT_BOT_ID }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: | 
+          Testing failed.
+          More information in file:
         document: app/build/reports/tests/testDebugUnitTest/index.html
         
   build:
