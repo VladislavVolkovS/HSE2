@@ -47,7 +47,7 @@ jobs:
           More information in file:
         document: app/build/reports/tests/testDebugUnitTest/index.html
         
-    - name: send message with report - succesful
+    - name: send message with report - failed
       if: failure()
       uses: appleboy/telegram-action@master
       with:
