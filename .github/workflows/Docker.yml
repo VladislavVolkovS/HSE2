@@ -43,8 +43,12 @@ jobs:
 
     steps:
 
-      - name: docker ps
-        run: docker ps
+      - name: print env
+        run: ls ~
         
       - name: pull image
         run: docker pull vladosenv/hse-app:latest
+        
+      - name: print env
+        run: ls ~
+        
