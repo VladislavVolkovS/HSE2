@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: DockerHub && Deploy on self-hosted
 
 on:
   push:
