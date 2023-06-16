@@ -35,3 +35,16 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/hse-app:latest
+          
+          
+  Deploy_container:
+  
+    runs-on: self-hosted
+
+    steps:
+
+      - name: docker ps
+        run: docker ps
+        
+      - name: pull image
+        run: docker pull vladosenv/hse-app:latest
