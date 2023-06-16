@@ -1,4 +1,4 @@
-FROM gradle:8.0.1-jdk17-alpine
+FROM gradle:8.0.1-jdk17
 WORKDIR /usr/src/HSE2
 COPY . /usr/src/HSE2
 ARG ANDROID_SDK_VERSION=9477386
