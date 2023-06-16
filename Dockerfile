@@ -10,6 +10,6 @@ RUN mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools && \
     rm *tools*linux*.zip
 ENV PATH ${PATH}:${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin:${ANDROID_SDK_ROOT}/cmdline-tools/tools/bin:${ANDROID_SDK_ROOT}/platform-tools:${ANDROID_SDK_ROOT}/emulator
 RUN yes | sdkmanager --licenses && \
-	sdkmanager "platforms;android-33" "build-tools;29.0.2" && \
+	sdkmanager "platforms;android-33" "build-tools;33.0.0" "build-tools;33.0.0" "build-tools;30.0.3" && \
 	cd /usr/src/HSE2
 RUN gradle build
