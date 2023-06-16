@@ -1,0 +1,21 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+  workflow_dispatch:
+
+jobs:
+
+  Deploy_container:
+  
+    runs-on: self-hosted
+
+    steps:
+
+      - name: print env
+        run: ls -la
+  
