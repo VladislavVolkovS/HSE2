@@ -1,6 +1,7 @@
 # HSE2
 Лабораторная DevOps:
 На данный момент выполнена на 10(но почему то перестал подгружаться контейнер):
+[![Android CI/CD](https://github.com/VladislavVolkovS/HSE2/actions/workflows/hse2.yml/badge.svg)](https://github.com/VladislavVolkovS/HSE2/actions/workflows/hse2.yml)
 
 На 4-5:
 - Выбрано приложение с курсовой работы (Android)
@@ -23,5 +24,3 @@
 На 10:
 - Добавлено unit тестирование, а также выгрузка артефакта - html отчета о тестировании в телеграм канал
 
-
-[![Android CI/CD](https://github.com/VladislavVolkovS/HSE2/actions/workflows/hse2.yml/badge.svg)](https://github.com/VladislavVolkovS/HSE2/actions/workflows/hse2.yml)
