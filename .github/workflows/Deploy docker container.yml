@@ -6,7 +6,6 @@ on:
   pull_request:
     branches: [ "master" ]
 
-  workflow_dispatch:
 
 jobs:
 
@@ -16,6 +15,12 @@ jobs:
 
     steps:
 
-      - name: print env
+      - name: docker ps
+        run: docker ps
+        
+      - name: pull image
+        run: docker pull vladosenv/hse-app:latest
+        
+      - name: ls -la
         run: ls -la
   
