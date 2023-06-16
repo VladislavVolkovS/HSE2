@@ -3,7 +3,9 @@
 Лабораторная DevOps:
 
 На данный момент выполнена на 10(но почему то перестал подгружаться контейнер):
+
 [![Android CI/CD](https://github.com/VladislavVolkovS/HSE2/actions/workflows/hse2.yml/badge.svg)](https://github.com/VladislavVolkovS/HSE2/actions/workflows/hse2.yml)
+
 [![DockerHub && Deploy on self-hosted](https://github.com/VladislavVolkovS/HSE2/actions/workflows/Docker.yml/badge.svg)](https://github.com/VladislavVolkovS/HSE2/actions/workflows/Docker.yml)
 
 
